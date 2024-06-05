@@ -8,17 +8,21 @@ local roundManagerScript : module = require("RoundManager")
 
 function self:ClientAwake()
     self.gameObject:GetComponent(TapHandler).Tapped:Connect(function() 
-        SitPlayer()
+        SitRequest()
     end)
 end
 
-function SitPlayer()
+function SitRequest()
     if(isOccupied == false) then
         print("Player Sitting")
         client.localPlayer.character:Teleport(objSittable.transform.position)
-        client.localPlayer.character:PlayEmote("sit-idle", true)
+        client.localPlayer.character:PlayEmote("sit-idle", true, objSittable)
         isOccupied = true
-        roundManagerScript.OccupyFurniture()
+        gameManagerScript.OccupyFurniture(self, objSittable)
         gameManagerScript.ChangePlayerState(2)
-    end
+    end 
+end
+
+function OccupyFurniture()
+    isOccupied = true
 end

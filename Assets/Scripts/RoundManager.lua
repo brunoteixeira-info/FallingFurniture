@@ -1,7 +1,5 @@
 --!Type(Module)
 --!SerializeField
-local spawnCollider : Collider = nil
---!SerializeField
 local furniture1 : GameObject = nil
 --!SerializeField
 local furniture2 : GameObject = nil
@@ -11,7 +9,7 @@ local furniture3 : GameObject = nil
 local furniture4 : GameObject = nil
 
 local gameStarted : boolean = false
-ActivePlayers = 2
+ActivePlayers = 3
 FurnitureOccupied = 0
 
 arrayFurniturePrefabs = { furniture1, furniture2, furniture3, furniture4 }
@@ -19,15 +17,13 @@ arrayFurnitureInstantiated = {}
 
 local gameManagerScript : module = require("GameManager")
 
-function self:ClientStart()
-    -- Create a new Timer object. Interval: 5, Callback:function()..end, Repeating: false
-    local newTimer = Timer.new(5, function() SpawnFurniture() end, false)
+function self:ServerStart()
+    StartFurnitureSpawn(5)
 end
 
 function SpawnFurniture()
     minTime = 3
     maxTime = 6
-    arrayFurnitureInstantiated = {}
     for i=1, ActivePlayers - 1 do
         local timeRoll = math.random(minTime, maxTime)
         print("Spawning Furniture #" .. i .. " in " .. timeRoll .. " seconds")
@@ -40,20 +36,33 @@ end
 function SpawnRandomFurniture(i)
     local furnitureRoll = math.random(1, #arrayFurniturePrefabs)
     
-    local newFurniture = Object.Instantiate(arrayFurniturePrefabs[furnitureRoll])
-    local furnitureX = math.random(spawnCollider.bounds.min.x, spawnCollider.bounds.max.x)
-    local furnitureZ = math.random(spawnCollider.bounds.min.z, spawnCollider.bounds.max.z)
+    local furnitureX = math.random(-3, 3)
+    local furnitureZ = math.random(-3, 3)
 
-    newFurniture.transform.position = Vector3.new(furnitureX, 0, furnitureZ)
-    arrayFurnitureInstantiated[i] = newFurniture
+    arrayFurnitureInstantiated[i] = Object.Instantiate(arrayFurniturePrefabs[furnitureRoll], Vector3.new(furnitureX, 0, furnitureZ), Vector3.new(0, 0, 0))
+    print(arrayFurnitureInstantiated[i])
 end
 
 function OccupyFurniture()
     FurnitureOccupied = FurnitureOccupied + 1
     if(FurnitureOccupied == ActivePlayers - 1) then
+        print("All Furniture Occupied. Proceed to eliminate players and furniture.")
         gameManagerScript.EliminatePlayers()
-        for i=1, ActivePlayers - 1 do
-            Object.Destroy(arrayFurnitureInstantiated[i])
-        end
+        gameManagerScript.DestroyFurniture(arrayFurnitureInstantiated)
+        gameManagerScript.SpawnFurniture(5)
     end
 end
+
+function DestroyFurniture(arrayFurniture)
+    arrayFurnitureInstantiated = arrayFurniture
+    for i=1, #arrayFurnitureInstantiated do
+        Object.Destroy(arrayFurnitureInstantiated[i])           
+    end
+end
+
+function StartFurnitureSpawn(timeToSpawn)
+    print("Spawning Furniture in " .. timeToSpawn .. " seconds.")
+    -- Create a new Timer object. Interval: 5, Callback:function()..end, Repeating: false
+    local newTimer = Timer.new(timeToSpawn, function() SpawnFurniture() end, false)
+end
+
