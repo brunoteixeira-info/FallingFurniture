@@ -23,6 +23,8 @@ namespace Highrise.Lua.Generated
         private const string s_scriptGUID = "1cfd2ebb8f346dc49854a00e4138d41a";
         public override string ScriptGUID => s_scriptGUID;
 
+        [SerializeField] public UnityEngine.Texture m_spriteFurnitureAvailable = default;
+        [SerializeField] public UnityEngine.Texture m_spriteFurnitureOccupied = default;
 
         protected override SerializedPropertyValue[] SerializeProperties()
         {
@@ -31,6 +33,9 @@ namespace Highrise.Lua.Generated
 
             return new SerializedPropertyValue[]
             {
+                CreateSerializedProperty(_script.GetPropertyAt(0), null),
+                CreateSerializedProperty(_script.GetPropertyAt(1), m_spriteFurnitureAvailable),
+                CreateSerializedProperty(_script.GetPropertyAt(2), m_spriteFurnitureOccupied),
             };
         }
     }

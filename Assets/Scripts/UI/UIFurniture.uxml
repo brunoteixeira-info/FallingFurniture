@@ -8,6 +8,8 @@
 >
 
   <hr:UILuaView class="furniture">
+    <hr:UIImage name="imageFurniture">
+    </hr:UIImage>
   </hr:UILuaView>
 
 </UXML>

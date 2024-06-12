@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="UnityEngine.UIElements"
+    xmlns:hr="Highrise.UI"
+    xmlns:editor="UnityEditor.UIElements"
+    xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
+>
+
+  <hr:UILuaView class="round-manager" picking-mode="Ignore">
+    <hr:UILabel name="textTimer" picking-mode="Ignore">
+    </hr:UILabel>
+    <hr:UIImage name="containerSlotPlayers" picking-mode="Ignore">
+        <hr:UILabel name="textLeaderboard">
+        </hr:UILabel>
+        <hr:UIButton name="buttonCloseContainerSlots">
+        </hr:UIButton>
+        <hr:UIImage name="slotPlayer" class="hide">
+            <hr:UILabel name="textSlotPlayerName">
+            </hr:UILabel>
+            <hr:UIImage name="imageSlotPlayerRank">
+            </hr:UIImage>
+        </hr:UIImage>
+    </hr:UIImage>
+  </hr:UILuaView>
+
+</UXML>

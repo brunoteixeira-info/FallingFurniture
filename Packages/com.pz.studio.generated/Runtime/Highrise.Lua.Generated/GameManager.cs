@@ -25,6 +25,7 @@ namespace Highrise.Lua.Generated
 
         [SerializeField] public Highrise.AudioShader m_music = default;
         [SerializeField] public UnityEngine.GameObject m_areaSpectator = default;
+        [SerializeField] public UnityEngine.GameObject m_areaGame = default;
 
         protected override SerializedPropertyValue[] SerializeProperties()
         {
@@ -35,6 +36,7 @@ namespace Highrise.Lua.Generated
             {
                 CreateSerializedProperty(_script.GetPropertyAt(0), m_music),
                 CreateSerializedProperty(_script.GetPropertyAt(1), m_areaSpectator),
+                CreateSerializedProperty(_script.GetPropertyAt(2), m_areaGame),
             };
         }
     }

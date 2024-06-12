@@ -1,0 +1,117 @@
+* {
+  padding: 0;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.round-manager {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    -unity-font-definition: var(--font-regular);
+    height: 100%;
+    width: 100%;
+}
+
+.round-manager #textTimer{
+    font-size: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    color: #ffffff;
+    top: -50px;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
+.round-manager #containerSlotPlayers{
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    background-image: url("project://database/Assets/simple UI & icons/box/box_option2.png")
+}
+
+.round-manager #textLeaderboard{
+    font-size: 200%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    color: #ffffff;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
+.round-manager #buttonCloseContainerSlots{
+    width: 20%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-end;
+    margin-left: 100px;
+    top: -50px;
+    left: 30px;
+    background-image: url("project://database/Assets/simple UI & icons/button/button_exit.png")
+}
+
+.round-manager #slotPlayer{
+    width: 300px;
+    height: 150px;
+    top: 0px;
+    left: auto;
+    align-self: center;
+    background-image: url("project://database/Assets/simple UI & icons/box/box_exp2.png")
+}
+
+.round-manager #textSlotPlayerName{
+    color: rgba(0,0,0,1);
+    font-size: 100%;
+    letter-spacing: 5%;
+    left: 0px;
+    top: 65px;
+    align-self: center;
+}
+
+.round-manager #imageSlotPlayer{
+    width: 300px;
+    height: 150px;
+    top: 100px;
+    left: auto;
+    align-self: center;
+}
+
+.slotPlayer{
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    padding: 15px;
+    margin-bottom: 0px;
+    background-image: url("project://database/Assets/simple UI & icons/box/box_exp2.png")
+}
+
+.textSlotPlayerName{
+    color: rgba(0,0,0,1);
+    font-size: 150%;
+    letter-spacing: 5%;
+    align-self: center;
+    justify-content: space-between;
+    display: flex;
+    align-self: center;
+    color: #ffffff;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
+.imageSlotPlayer{
+    width: 300px;
+    height: 100px;
+    top: 100px;
+    left: auto;
+    align-self: center;
+}
+
+.hide {
+    display: none;
+}

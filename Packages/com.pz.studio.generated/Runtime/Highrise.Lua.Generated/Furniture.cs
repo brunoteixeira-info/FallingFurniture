@@ -24,6 +24,9 @@ namespace Highrise.Lua.Generated
         public override string ScriptGUID => s_scriptGUID;
 
         [SerializeField] public UnityEngine.GameObject m_objSittable = default;
+        [SerializeField] public UnityEngine.GameObject m_objFurniture = default;
+        [SerializeField] public UnityEngine.GameObject m_fx_circleAvailable = default;
+        [SerializeField] public UnityEngine.GameObject m_fx_circleOccupied = default;
 
         protected override SerializedPropertyValue[] SerializeProperties()
         {
@@ -33,6 +36,9 @@ namespace Highrise.Lua.Generated
             return new SerializedPropertyValue[]
             {
                 CreateSerializedProperty(_script.GetPropertyAt(0), m_objSittable),
+                CreateSerializedProperty(_script.GetPropertyAt(1), m_objFurniture),
+                CreateSerializedProperty(_script.GetPropertyAt(2), m_fx_circleAvailable),
+                CreateSerializedProperty(_script.GetPropertyAt(3), m_fx_circleOccupied),
             };
         }
     }
